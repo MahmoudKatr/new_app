@@ -41,8 +41,9 @@ class CustomCard extends StatelessWidget {
                     title,
                     style: const TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold),
-                    softWrap: true, // Allows text to wrap
-                    overflow: TextOverflow.visible, // Ensures full text appears
+                    overflow:
+                        TextOverflow.ellipsis, // Ensures full text appears
+                    maxLines: 5,
                   ),
                 )
               ],
