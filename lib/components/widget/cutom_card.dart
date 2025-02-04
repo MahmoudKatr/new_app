@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/model/model.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key, required this.image, required this.title});
+  const CustomCard({
+    super.key,
+    required this.articles,
+  });
 
-  final String image;
-  final String title;
-
+  final Articles articles;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,7 +28,8 @@ class CustomCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
-                      image,
+                      articles.urlToImage ??
+                          'https://media.istockphoto.com/id/2149521043/photo/bituminous-shingle-tile-against-the-sky.jpg?s=2048x2048&w=is&k=20&c=XyHoFtCIWIefAArLXypyey9fe46WQGnSXEqC08_iz3M=',
                       fit: BoxFit.cover,
                       height: double.infinity,
                     ),
@@ -38,7 +41,7 @@ class CustomCard extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: Text(
-                    title,
+                    articles.title ?? 'No Title',
                     style: const TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold),
                     overflow:
