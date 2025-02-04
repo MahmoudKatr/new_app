@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/model/model.dart';
+import 'package:news_app/views/detail_screen.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard({
@@ -14,42 +15,52 @@ class CustomCard extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
       child: Column(
         children: [
-          Container(
-            height: 180,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
-              color: Colors.grey.withOpacity(0.5),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      articles.urlToImage ??
-                          'https://media.istockphoto.com/id/2149521043/photo/bituminous-shingle-tile-against-the-sky.jpg?s=2048x2048&w=is&k=20&c=XyHoFtCIWIefAArLXypyey9fe46WQGnSXEqC08_iz3M=',
-                      fit: BoxFit.cover,
-                      height: double.infinity,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailScreen(articles: articles),
+                ),
+              );
+            },
+            child: Container(
+              height: 180,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                color: Colors.grey.withOpacity(0.5),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                        articles.urlToImage ??
+                            'https://media.istockphoto.com/id/2149521043/photo/bituminous-shingle-tile-against-the-sky.jpg?s=2048x2048&w=is&k=20&c=XyHoFtCIWIefAArLXypyey9fe46WQGnSXEqC08_iz3M=',
+                        fit: BoxFit.cover,
+                        height: double.infinity,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    articles.title ?? 'No Title',
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold),
-                    overflow:
-                        TextOverflow.ellipsis, // Ensures full text appears
-                    maxLines: 5,
+                  const SizedBox(
+                    width: 10,
                   ),
-                )
-              ],
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      articles.title ?? 'No Title',
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold),
+                      overflow:
+                          TextOverflow.ellipsis, // Ensures full text appears
+                      maxLines: 5,
+                    ),
+                  )
+                ],
+              ),
             ),
           )
         ],
