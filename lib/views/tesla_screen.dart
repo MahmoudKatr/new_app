@@ -23,14 +23,11 @@ class _TeslaScreen extends State<TeslaScreen> {
   }
 
   void selectDateRange(BuildContext context) async {
-    final DateTime now = DateTime.now();
-    final DateTime sevenDaysAgo = now.subtract(const Duration(days: 7));
-
     final DateTimeRange? picked = await showDateRangePicker(
       context: context,
-      initialDateRange: DateTimeRange(start: sevenDaysAgo, end: now),
+      initialDateRange: DateTimeRange(start: from, end: to),
       firstDate: DateTime(2023),
-      lastDate: now,
+      lastDate: to,
     );
 
     if (picked != null) {
