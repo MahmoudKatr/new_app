@@ -14,7 +14,7 @@ class AppleScreen extends StatelessWidget {
           backgroundColor: Colors.blue,
           elevation: 0,
           centerTitle: true,
-          title: Text('Apple News'),
+          title: const Text('Apple News'),
         ),
         body: BlocProvider(
           create: (context) => NewsCubit()..fetchData('apple'),

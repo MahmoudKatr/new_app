@@ -14,7 +14,7 @@ class TeslaScreen extends StatelessWidget {
           backgroundColor: Colors.blue,
           elevation: 0,
           centerTitle: true,
-          title: Text('Tesla News'),
+          title: const Text('Tesla News'),
         ),
         body: BlocProvider(
           create: (context) => NewsCubit()..fetchData('tesla'),
