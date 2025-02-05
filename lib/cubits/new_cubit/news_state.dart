@@ -8,7 +8,9 @@ class NewsLoading extends NewsState {}
 
 class NewsLoaded extends NewsState {
   final List<Articles> articles;
-  NewsLoaded(this.articles);
+  final DateTime from;
+  final DateTime to;
+  NewsLoaded({required this.articles, required this.from, required this.to});
 }
 
 class NewsError extends NewsState {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/cubits/layout_cubit/layout_cubit.dart';
+import 'package:news_app/cubits/new_cubit/news_cubit.dart';
 import 'package:news_app/views/layout_screen.dart';
 
 void main() {
@@ -16,6 +17,9 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => LayoutCubit(),
+          ),
+          BlocProvider(
+            create: (context) => NewsCubit(),
           ),
         ],
         child: const MaterialApp(

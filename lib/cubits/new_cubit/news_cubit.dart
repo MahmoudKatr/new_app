@@ -6,21 +6,24 @@ import 'package:news_app/model/model.dart';
 
 class NewsCubit extends Cubit<NewsState> {
   NewsCubit() : super(NewsInitial());
-  void fetchData(String query) async {
+  void fetchData(String query, String from, String to) async {
     emit(NewsLoading());
     try {
       final response = await Dio().get(
         ApiConstants.baseUrl,
         queryParameters: {
           'q': query,
-          'from': '2025-01-30',
-          'to': '2025-01-30',
+          'from': from,
+          'to': to,
           'sortBy': 'popularity',
           'apiKey': ApiConstants.apiKey,
         },
       );
       final newsRespnse = NewsResponse.fromJson(response.data);
-      emit(NewsLoaded(newsRespnse.articles ?? []));
+      emit(NewsLoaded(
+          articles: newsRespnse.articles ?? [],
+          from: DateTime.parse(from),
+          to: DateTime.parse(to)));
     } catch (e) {
       emit(NewsError(e.toString()));
     }
