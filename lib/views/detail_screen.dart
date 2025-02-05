@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/model/model.dart';
+import 'package:news_app/views/web_view_screen.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key, required this.articles});
@@ -42,6 +43,35 @@ class DetailScreen extends StatelessWidget {
               const SizedBox(height: 16),
               Text('Author: ${articles.author}'),
               Text('Published At: ${articles.publishedAt}'),
+              const SizedBox(height: 16),
+              Text('Url: ${articles.url}'),
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            WebViewScreen(url: articles.url ?? ''),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text(
+                    'Show News',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              )
             ],
           ),
         ),
